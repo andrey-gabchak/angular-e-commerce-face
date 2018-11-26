@@ -11,6 +11,7 @@ export class RegistrationComponent implements OnInit {
 
   private user: User;
   private isEmailValid: boolean;
+  private passwordsMatch: boolean;
 
   constructor(private userService: UserService) { }
 
@@ -30,5 +31,9 @@ export class RegistrationComponent implements OnInit {
         this.isEmailValid = true;
       }
     );
+  }
+
+  public comparePasswords(): void {
+    this.passwordsMatch = this.user.password === this.user.verifiedPassword;
   }
 }
