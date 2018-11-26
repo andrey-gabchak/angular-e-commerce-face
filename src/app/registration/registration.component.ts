@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../model/user';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -9,8 +10,9 @@ import {User} from '../model/user';
 export class RegistrationComponent implements OnInit {
 
   private user: User;
+  private isEmailValid: boolean;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.user = new User();
@@ -18,5 +20,15 @@ export class RegistrationComponent implements OnInit {
 
   public createUser(): void {
     console.log(this.user);
+  }
+
+  public verifyEmail(email: string): void {
+    this.userService.getByEmail(this.user.email).subscribe(
+      resp => {
+        this.isEmailValid = true;
+      }, err => {
+        this.isEmailValid = false;
+      }
+    );
   }
 }

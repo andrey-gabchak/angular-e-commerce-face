@@ -5,6 +5,7 @@
     <div class="row col-4">
       <label class="sr-only">Email address</label>
       <input #email (blur)="verifyEmail(email)" [(ngModel)]=user.email type="email" class="form-control" placeholder="Email address"/>
+      <div style="color: red" class="error" *ngIf="isEmailValid === false">Email already registered</div>
     </div>
 
     <div class="row col-4">
@@ -17,7 +18,7 @@
       <input type="password" id="verifiedPassword" class="form-control" placeholder="Repeat Password"/>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block ml-5 mt-3 col-4" (click)="createUser()">Register</button>
+    <button [disabled]="isEmailValid" class="btn btn-lg btn-primary btn-block ml-5 mt-3 col-4" (click)="createUser()">Register</button>
 
   </div>
 </div>
