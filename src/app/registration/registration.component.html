@@ -4,7 +4,7 @@
 
     <div class="row col-4">
       <label class="sr-only">Email address</label>
-      <input #email [(ngModel)]=user.email type="email" class="form-control" placeholder="Email address"/>
+      <input #email (blur)="verifyEmail(email)" [(ngModel)]=user.email type="email" class="form-control" placeholder="Email address"/>
     </div>
 
     <div class="row col-4">
