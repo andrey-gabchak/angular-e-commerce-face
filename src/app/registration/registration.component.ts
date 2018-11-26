@@ -36,4 +36,10 @@ export class RegistrationComponent implements OnInit {
   public comparePasswords(): void {
     this.passwordsMatch = this.user.password === this.user.verifiedPassword;
   }
+
+  public validateRegistrationForm(): boolean {
+    return this.isEmailValid === undefined ? false :
+      this.passwordsMatch === undefined ? false :
+        this.isEmailValid && this.passwordsMatch;
+  }
 }
