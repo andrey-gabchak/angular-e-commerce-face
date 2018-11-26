@@ -25,9 +25,9 @@ export class RegistrationComponent implements OnInit {
   public verifyEmail(email: string): void {
     this.userService.getByEmail(this.user.email).subscribe(
       resp => {
-        this.isEmailValid = true;
-      }, err => {
         this.isEmailValid = false;
+      }, err => {
+        this.isEmailValid = true;
       }
     );
   }
